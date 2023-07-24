@@ -20,12 +20,12 @@ private val users = listOf(
 @Api
 suspend fun getUser(context: ApiContext) {
     try {
-        val name = context.req.params.getValue("name").toString()
-        users.forEach { user: User ->
-            if (user.name == name) {
-                context.res.setBodyText(Json.encodeToString<ApiResponse>(ApiResponse.Success(user)))
-            }
-        }
+//        val name = context.req.params.getValue("name").toString()
+//        users.forEach { user: User ->
+//            if (user.name == name) {
+        context.res.setBodyText(Json.encodeToString<ApiResponse>(ApiResponse.Success(users)))
+//            }
+//    }
 
     } catch (e: Exception) {
         context.res.setBodyText(Json.encodeToString<ApiResponse>(ApiResponse.Error(e.message.toString())))
